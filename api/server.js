@@ -1,5 +1,5 @@
 const express = require("express");
-
+const cors = require('cors');
 const Halo = require("../halo/haloModel");
 
 const server = express();
