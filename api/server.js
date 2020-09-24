@@ -19,7 +19,7 @@ server.get("/char", (req, res) => {
       res.status(200).json(halo);
     })
     .catch(error => {
-      res.status(500).json(error);
+      res.status(500).json({ message: 'im dum' });
     });
 });
 
@@ -36,7 +36,7 @@ server.get('/char/:id', (req, res) => {
       }
     })
     .catch(err => {
-      res.status(500).json({ message: 'Failed to get characters' });
+      res.status(500).json({ err, message: 'Failed to get characters' });
     });
   });
 
@@ -55,7 +55,7 @@ server.post('/char', (req, res) => {
 
 
 // UPDATE (EDIT)  
-server.put('/:id', (req, res) => {
+server.put('/char/:id', (req, res) => {
   const { id } = req.params;
   const changes = req.body;
 
@@ -75,7 +75,7 @@ server.put('/:id', (req, res) => {
   });
 });
 
-server.delete('/:id', (req, res) => {
+server.delete('/char/:id', (req, res) => {
   const { id } = req.params;
 
   Halo.remove(id)
