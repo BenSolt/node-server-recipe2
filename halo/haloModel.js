@@ -26,7 +26,8 @@ function find() {
 //get by id
 function findById(id) {
     return db('halo')
-    .select('id', 'username')
+    // .select('id', 'username')
+    .select('id', 'name')
     .where({ id })
     .first();
 }

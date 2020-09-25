@@ -54,26 +54,46 @@ server.post('/char', (req, res) => {
   });
 
 
-// UPDATE (EDIT)  
-server.put('/char/:id', (req, res) => {
-  const { id } = req.params;
-  const changes = req.body;
+// UPDATE (EDIT)  ? is this what I need to add?
 
-  Halo.findById(id)
-  .then(char => {
+server.put('/char/:id', (req, res) =>{
+  Halo.update(req.body, req.params.id)
+  .then(char =>{
     if (char) {
-      Halo.update(changes, id)
-      .then(updatedchar => {
-        res.json(updatedchar);
-      });
+      res.json(char)
     } else {
-      res.status(404).json({ message: 'Could not find char with given id' });
+      res.status(404).json({message: "Recipe with specified ID does not exist"})
     }
   })
-  .catch (err => {
-    res.status(500).json({ message: 'Failed to update charcter' });
-  });
-});
+  .catch(err =>{
+    res.status(500).json({message: "Could not update Recipe"})
+  })
+})
+///////////////////////////////////////
+
+
+
+// UPDATE (EDIT)
+
+// server.put('/char/:id', (req, res) => {
+//   const { id } = req.params;
+//   const changes = req.body;
+
+//   Halo.findById(id)
+//   .then(char => {
+//     if (char) {
+//       Halo.update(changes, id)
+//       .then(updatedchar => {
+//         res.json(updatedchar);
+//       });
+//     } else {
+//       res.status(404).json({ message: 'Could not find char with given id' });
+//     }
+//   })
+//   .catch (err => {
+//     res.status(500).json({ message: 'Failed to update charcter' });
+//   });
+// });
 
 server.delete('/char/:id', (req, res) => {
   const { id } = req.params;
