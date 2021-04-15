@@ -19,7 +19,7 @@ server.get("/char", (req, res) => {
       res.status(200).json(halo);
     })
     .catch(error => {
-      res.status(500).json({ message: 'im dum' });
+      res.status(500).json({ message: 'failed to get recipe' });
     });
 });
 
@@ -32,11 +32,11 @@ server.get('/char/:id', (req, res) => {
       if (char) {
         res.json(char);
       } else {
-        res.status(404).json({ message: 'Could not find character with given id.' })
+        res.status(404).json({ message: 'Could not find recipe with given id.' })
       }
     })
     .catch(err => {
-      res.status(500).json({ err, message: 'Failed to get characters' });
+      res.status(500).json({ err, message: 'Failed to get recipe' });
     });
   });
 
@@ -49,7 +49,7 @@ server.post('/char', (req, res) => {
       res.status(201).json(char);
     })
     .catch (err => {
-      res.status(500).json({ message: 'Failed to create new character' });
+      res.status(500).json({ message: 'Failed to create new recipe' });
     });
   });
 

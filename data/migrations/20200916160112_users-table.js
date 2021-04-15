@@ -4,6 +4,7 @@ exports.up = function(knex) {
         tbl.increments();
     
         tbl.string('name', 255).notNullable();
+        tbl.string('ingredients', 255).notNullable();
       });
 };
 
