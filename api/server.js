@@ -46,7 +46,11 @@ server.post('/char', (req, res) => {
   
     Halo.add(data)
     .then(char => {
-      res.status(201).json(char);
+      Halo.find()
+        .then(halo => {
+          res.status(200).json(halo);
+        })
+      //res.status(201).json(char);
     })
     .catch (err => {
       res.status(500).json({ message: 'Failed to create new recipe' });
