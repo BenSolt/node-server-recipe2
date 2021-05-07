@@ -64,13 +64,7 @@ server.put('/char/:id', (req, res) =>{
   Halo.update(req.body, req.params.id)
   .then(char =>{
     if (char) {
-      //
-      Halo.find()
-      .then(halo => {
-        res.status(200).json(halo);
-      })
-      // res.json(char)
-      //
+      res.json(char)
     } else {
       res.status(404).json({message: "Recipe with specified ID does not exist"})
     }
