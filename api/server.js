@@ -64,10 +64,10 @@ server.put('/char/:id', (req, res) =>{
   Halo.update(req.body, req.params.id)
   .then(char =>{
     //
-    Halo.find()
-      .then(halo => {
-        res.status(200).json(halo);
-      })
+    // Halo.find()
+    //   .then(halo => {
+    //     res.status(200).json(halo);
+    //   })
       //
     if (char) {
       res.json(char)
@@ -88,6 +88,12 @@ server.delete('/char/:id', (req, res) => {
   .then(deleted => {
     if (deleted) {
       res.json({ removed: deleted });
+      //
+      Halo.find()
+      .then(halo => {
+        res.status(200).json(halo);
+      })
+      //
     } else {
       res.status(404).json({ message: 'Could not find character with given id' });
     }
