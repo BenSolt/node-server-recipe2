@@ -46,11 +46,11 @@ server.post('/char', (req, res) => {
   
     Halo.add(data)
     .then(char => {
-      Halo.find()
-        .then(halo => {
-          res.status(200).json(halo);
-        })
-      //res.status(201).json(char);
+      // Halo.find()
+      //   .then(halo => {
+      //     res.status(200).json(halo);
+      //   })
+      res.status(201).json(char);
     })
     .catch (err => {
       res.status(500).json({ message: 'Failed to create new recipe' });
@@ -63,18 +63,11 @@ server.post('/char', (req, res) => {
 server.put('/char/:id', (req, res) =>{
   Halo.update(req.body, req.params.id)
   .then(char =>{
-      //
-    Halo.find()
-    .then(halo => {
-      res.status(200).json(halo);
-    })
-    //
-    
-    // if (char) {
-    //   res.json(char)
-    // } else {
-    //   res.status(404).json({message: "Recipe with specified ID does not exist"})
-    // }
+    if (char) {
+      res.json(char)
+    } else {
+      res.status(404).json({message: "Recipe with specified ID does not exist"})
+    }
   })
   .catch(err =>{
     res.status(500).json({message: "Could not update Recipe"})
