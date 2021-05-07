@@ -63,12 +63,14 @@ server.post('/char', (req, res) => {
 server.put('/char/:id', (req, res) =>{
   Halo.update(req.body, req.params.id)
   .then(char =>{
-    if (char) {
-      Halo.find()
+    //
+    Halo.find()
       .then(halo => {
         res.status(200).json(halo);
       })
-      //res.json(char)
+      //
+    if (char) {
+      res.json(char)
     } else {
       res.status(404).json({message: "Recipe with specified ID does not exist"})
     }
@@ -77,31 +79,7 @@ server.put('/char/:id', (req, res) =>{
     res.status(500).json({message: "Could not update Recipe"})
   })
 })
-///////////////////////////////////////
 
-
-
-// UPDATE (EDIT)
-
-// server.put('/char/:id', (req, res) => {
-//   const { id } = req.params;
-//   const changes = req.body;
-
-//   Halo.findById(id)
-//   .then(char => {
-//     if (char) {
-//       Halo.update(changes, id)
-//       .then(updatedchar => {
-//         res.json(updatedchar);
-//       });
-//     } else {
-//       res.status(404).json({ message: 'Could not find char with given id' });
-//     }
-//   })
-//   .catch (err => {
-//     res.status(500).json({ message: 'Failed to update charcter' });
-//   });
-// });
 
 server.delete('/char/:id', (req, res) => {
   const { id } = req.params;
