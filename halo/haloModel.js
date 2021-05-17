@@ -10,9 +10,7 @@ module.exports = {
 
 //post (create)
 async function add(character) {
-  console.log(character)
-  db('halo').insert(character, "id")
-  return db("halo")
+  return db('halo').insert(character, "id")
 }
 
 //update (edit)
