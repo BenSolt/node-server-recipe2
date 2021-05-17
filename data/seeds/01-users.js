@@ -18,16 +18,7 @@ exports.seed = function(knex, Promise) {
             id: 3,
             name: 'Mexican Pizza',
             ingredients: 'ingreds 3'
-         },
-          { 
-            id: 4,
-            name: 'captain keys',
-            ingredients: 'ingreds 4'
-         },
-          { 
-            id: 5,
-            name: 'dr halsey',
-            ingredients: 'ingreds 5' }
+         }
         ]);
       });
   };

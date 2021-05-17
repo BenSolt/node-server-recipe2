@@ -5,15 +5,8 @@ module.exports = {
   development: {
     client: 'sqlite3',
     connection: {
-      filename: './data/halo.db3'
-    },
-    useNullAsDefault: true,
-    migrations: {
-      directory: './data/migrations',
-    },
-    seeds: {
-      directory: './data/seeds',
-    },
+      filename: './dev.sqlite3'
+    }
   },
 
   staging: {

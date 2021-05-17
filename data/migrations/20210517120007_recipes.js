@@ -1,4 +1,3 @@
-
 exports.up = function(knex) {
     return knex.schema.createTable('halo', tbl => {
         tbl.increments();
