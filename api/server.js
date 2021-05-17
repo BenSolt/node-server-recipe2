@@ -14,6 +14,7 @@ server.get("/", (req, res) => {
 
 //GET CHARACTERS
 server.get("/char", (req, res) => {
+  console.log("This Ran")
     Halo.find()
     .then(halo => {
       res.status(200).json(halo);

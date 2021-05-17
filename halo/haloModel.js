@@ -20,6 +20,7 @@ async function update(user, id) {
 
 //get
 function find() {
+  console.log("this also ran")
   return db('halo');
 }
 
