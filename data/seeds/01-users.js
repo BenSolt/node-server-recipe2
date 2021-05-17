@@ -6,17 +6,17 @@ exports.seed = function(knex, Promise) {
       .then(function() {
         return knex('halo').insert([
           { id: 1,
-            name: 'master chief',
+            name: 'Chicken Casserole',
             ingredients: 'ingreds 1'
         },
           { 
             id: 2,
-            name: 'cortana',
+            name: 'Fish Baked in Parchment',
             ingredients: 'ingreds 2'
         },
           { 
             id: 3,
-            name: 'arbiter',
+            name: 'Mexican Pizza',
             ingredients: 'ingreds 3'
          },
           { 
