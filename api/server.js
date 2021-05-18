@@ -14,7 +14,6 @@ server.get("/", (req, res) => {
 
 //GET CHARACTERS
 server.get("/char", (req, res) => {
-  console.log("This Ran")
     Halo.find()
     .then(halo => {
       res.status(200).json(halo);
@@ -51,7 +50,7 @@ server.post('/char', (req, res) => {
       //   .then(halo => {
       //     res.status(200).json(halo);
       //   })
-      res.status(201).json({char});
+      res.status(201).json(char);
     })
     .catch (err => {
       res.status(500).json({ message: 'Failed to create new recipe' });
