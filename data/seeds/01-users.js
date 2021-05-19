@@ -7,7 +7,7 @@ exports.seed = function(knex, Promise) {
         return knex('halo').insert([
           { id: 1,
             name: 'Chicken Casserole',
-            ingredients: 'ingreds 1'
+            ingredients: 'ingredients 1'
         },
           { 
             id: 2,
