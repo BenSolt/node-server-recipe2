@@ -5,8 +5,10 @@ const Halo = require("../halo/haloModel");
 const server = express();
 
 server.use(cors())
-
 server.use(express.json());
+
+const multer = require('multer')
+const Tesseract = require('tesseract.js')
 
 server.get("/", (req, res) => {
   res.status(200).json({ api: "up" });
@@ -57,6 +59,52 @@ server.post('/char', (req, res) => {
     });
   });
 
+//POST (CREATE) OCR ////////////////////////////////////////////
+
+const storage=multer.diskStorage({
+  destination:(req,file,cb)=>{
+      cb(null,'./uploads/');
+  },
+  filename:(req,file,cb)=>{
+      cb(null,file.originalname);
+  }
+})
+
+const upload= multer({storage:storage});
+
+server.post('/char/upload', upload.single('uploadedImage'),(req,res)=>{
+  console.log(req.file);
+
+  const data = req.body;
+
+  Halo.add(data)
+    .then(char => {
+      res.status(201).json(char);
+    })
+    .catch (err => {
+      res.status(500).json({ message: 'Failed to create image' });
+    });
+  });
+  // try{
+  //     Tesseract.recognize(
+  //         'uploads/' +req.file.filename,
+  //         'eng',
+  //         {logger:m =>console.log(m)}
+        
+  //     )
+  //     .then(({data:{text}})=>{
+
+  //         return res.json(
+  //             {
+  //                 message:text
+  //             }
+  //         )
+  //     })
+
+//   }catch(error){
+//       console.error(error, 'error1')
+//   }
+// })
 
 // UPDATE (EDIT)  ? is this what I need to add?
 
