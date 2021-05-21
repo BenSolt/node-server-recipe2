@@ -75,36 +75,26 @@ const upload= multer({storage:storage});
 server.post('/char/upload', upload.single('uploadedImage'),(req,res)=>{
   console.log(req.file);
 
-  const data = req.body;
-
-  Halo.add(data)
-    .then(char => {
-      res.status(201).json(char);
-    })
-    .catch (err => {
-      res.status(500).json({ message: 'Failed to create image' });
-    });
-  });
-  // try{
-  //     Tesseract.recognize(
-  //         'uploads/' +req.file.filename,
-  //         'eng',
-  //         {logger:m =>console.log(m)}
+  try{
+      Tesseract.recognize(
+          'uploads/' +req.file.filename,
+          'eng',
+          {logger:m =>console.log(m)}
         
-  //     )
-  //     .then(({data:{text}})=>{
+      )
+      .then(({data:{text}})=>{
 
-  //         return res.json(
-  //             {
-  //                 message:text
-  //             }
-  //         )
-  //     })
+          return res.json(
+              {
+                  message:text
+              }
+          )
+      })
 
-//   }catch(error){
-//       console.error(error, 'error1')
-//   }
-// })
+  }catch(error){
+      console.error(error, 'error1')
+  }
+})
 
 // UPDATE (EDIT)  ? is this what I need to add?
 
