@@ -61,18 +61,18 @@ server.post('/char', (req, res) => {
 
 //POST (CREATE) OCR ////////////////////////////////////////////
 
-app.get("/uploads/:id", (req, res) => {
+server.get("/uploads/:id", (req, res) => {
   console.log(__dirname)
   res.send(fs.readFileSync(`${__dirname}\\uploads\\${req.params.id}`));
 });
 
 
 
-// const fileUpload = require('express-fileupload');
-// app.use(fileUpload({ debug: true }));
+const fileUpload = require('express-fileupload');
+app.use(fileUpload({ debug: true }));
 
 // Upload Endpoint
-app.post("/upload", (req, res) => {
+server.post("/upload", (req, res) => {
   if (req.files === null) {
     return res.status(400).json({ msg: 'No file uploaded' });
   }
