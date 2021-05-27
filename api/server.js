@@ -61,10 +61,10 @@ server.post('/char', (req, res) => {
 
 //POST (CREATE) OCR ////////////////////////////////////////////
 
-// server.get("/uploads/:id", (req, res) => {
-//   console.log(__dirname)
-//   res.send(fs.readFileSync(`${__dirname}\\uploads\\${req.params.id}`));
-// });
+server.get("/uploads/:id", (req, res) => {
+  console.log(__dirname)
+  res.send(fs.readFileSync(`${__dirname}\\uploads\\${req.params.id}`));
+});
 
 
 
