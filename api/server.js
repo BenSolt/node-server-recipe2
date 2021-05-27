@@ -68,8 +68,8 @@ server.get("/uploads/:id", (req, res) => {
 
 
 
-// const fileUpload = require('express-fileupload');
-// app.use(fileUpload({ debug: true }));
+const fileUpload = require('express-fileupload');
+server.use(fileUpload({ debug: true }));
 
 // // Upload Endpoint
 server.post("/upload", (req, res) => {
