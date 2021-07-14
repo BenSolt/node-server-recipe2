@@ -62,7 +62,7 @@ server.post('/char', (req, res) => {
 //POST (CREATE) OCR ////////////////////////////////////////////
 
 server.get("/uploads/:id", (req, res) => {
-  console.log(__dirname)
+  console.log(__dirname, "get uploads")
   res.send(fs.readFileSync(`${__dirname}\\uploads\\${req.params.id}`));
 });
 
@@ -81,7 +81,7 @@ server.post("/upload", (req, res) => {
 
   file.mv(`${__dirname}\\uploads\\${file.name}`, err => {
     if (err) {
-      console.error(err);
+      console.error(err, "err filemv");
       return res.status(500).send(err);
     }
 
@@ -89,45 +89,6 @@ server.post("/upload", (req, res) => {
   });
 });
 
-////////////////////////////////////////////////////////////////////
-//NOT USING BELOW
-
-// const storage=multer.diskStorage({
-//   destination:(req,file,cb)=>{
-//       cb(null,'./uploads/');
-//   },
-//   filename:(req,file,cb)=>{
-//       cb(null,file.originalname);
-//   }
-// })
-
-// const upload= multer({storage:storage});
-
-// app.post('/upload', (req, res) => {
-//   upload(req, res, err => {
-//       console.log(req.file);
-//       fs.readFile(`./uploads/${req.file.originalname}`, (err, data) => {
-//           if (err) return console.log('error');
-//           try {
-//               Tesseract
-//                   .recognize(
-//                       'uploads/' + req.file.filename,
-//                       'eng',
-//                   { logger: m => console.log(m) }
-//                   )
-//                   .then(({ data: { text } }) => {
-//                       return res.json(
-//                           {
-//                               text
-//                           }
-//                       )
-//                   })
-//           } catch (error) {
-//               console.error(error)
-//           }
-//       });
-//   });
-// });
 
 // EDIT RECIPE
 server.put('/char/:id', (req, res) => {
